@@ -1,6 +1,9 @@
 import React from 'react';
 import Fruta from './components/Fruta';
 import GranTotal from './components/GranTotal';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Pagina1 from './components/Pagina1'
+import Pagina2 from './components/Pagina2'
 
 class App extends React.Component {
 
@@ -50,7 +53,22 @@ class App extends React.Component {
     render() {
         return (
            <>
-                {
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<GranTotal total={this.state.total} />} />
+                        <Route path='/pagina1' element={<Pagina1 />} />
+                        <Route path='/pagina2' element={<Pagina2 />} />
+                    </Routes>
+                </BrowserRouter>
+           </>
+        )
+    }
+}
+
+export default App
+
+/*
+{
                     this.frutas.map(fruta => {
                         return <Fruta 
                             key={fruta.id} 
@@ -62,9 +80,4 @@ class App extends React.Component {
                 }
 
                 <GranTotal total={this.state.total} />
-           </>
-        )
-    }
-}
-
-export default App
+*/ 
