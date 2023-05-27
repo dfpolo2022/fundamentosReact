@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import style from "./navegacion.module.css"
 
 
 class Navegacion extends React.Component {
@@ -8,9 +9,11 @@ class Navegacion extends React.Component {
 
         return (
             <>
-                <Link to="/">Fruta</Link>
-                <Link to="/pagina1">Pagina 1</Link>
-                <Link to="/pagina2">Pagina 2</Link>
+            <header className={style.contenedor}>
+                <Link to="/">REGISTRO</Link>
+                <Link to="/calendario">CALENDARIO</Link>
+            </header>
+                
 
             </>
         )

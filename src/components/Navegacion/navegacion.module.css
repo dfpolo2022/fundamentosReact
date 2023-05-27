@@ -1,1 +1,11 @@
-import 
+.contenedor {
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold;
+    color: black;
+    font-size: larger;
+    text-decoration: none;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    background-color: orange;
+}

@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.headerStyle{
+    background-color: orange;
+    border-bottom: 3px solid black;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.headerLinks{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: auto;
+    display: inline-block;
+}
+
+.headerNotif{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 2vw;
+    display: inline-block;
+    margin-right: 2vw;
+}

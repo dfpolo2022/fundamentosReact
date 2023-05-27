@@ -1,0 +1,58 @@
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contenedor{
+    display: inline-flex;
+    align-items: left;
+    justify-content: center;
+    color: black;
+    font-size: large;
+    flex-direction: column;
+    background-color: orange;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 3vh;
+}
+
+.contenedorRow{
+    display: inline-flex;
+    align-items: center;
+    justify-content: left;
+    color: black;
+    flex-direction: row;
+    font-size: large;
+    padding: 10px;
+    height: 2vh;
+}
+
+.contenedorSubmit{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    flex-direction: row;
+    font-size: large;
+    padding: 10px;
+    height: 2vh;
+}
+
+.input{
+    border-radius: 5px;
+    height: 3vh;
+    width: 20vw;
+    margin-left: auto;
+    font-size: 15px;
+}
+
+.inputSubmit{
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}

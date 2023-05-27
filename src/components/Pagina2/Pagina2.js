@@ -1,13 +1,18 @@
 import React from "react"
 import Navegacion from "../Navegacion"
+import style from './pagina2.module.css'
+import { Calendario } from "../Calendario/Calendario"
 
 class Pagina2 extends React.Component {
 
     render() {
         return (
             <>
-                <Navegacion />
-                <h1>Pagina 2</h1>
+            <header className={style.headerStyle}>
+                <a href="" className={style.headerLinks}>USUARIO</a>
+                <a href="" className={style.headerNotif}>NOTIFICACIONES</a>
+            </header>
+            <Calendario />
             </>
         )
     }
