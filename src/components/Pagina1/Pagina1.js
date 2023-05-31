@@ -37,10 +37,11 @@ function Pagina1(props) {
 	return (
 		<>
 			<section className={style.section}>
+				<p className={style.titulo}>¡Bienvenidos a MeTocaFinal LTDA!</p>
 				<form onSubmit={handleSubmit}>
 					<div className={style.contenedor}>
 						<div className={style.contenedorRow}>
-							<h3>NOMBRE:</h3>
+							<h3>Nombre :</h3>
 							<input
 								type="text"
 								value={state.nombre}
@@ -50,7 +51,7 @@ function Pagina1(props) {
 							></input>
 						</div>
 						<div className={style.contenedorRow}>
-							<h3>E-MAIL:</h3>
+							<h3>E-Mail :</h3>
 							<input
 								type="text"
 								value={state.email}
@@ -60,7 +61,8 @@ function Pagina1(props) {
 							></input>
 						</div>
 						<div className={style.contenedorRow}>
-							<h3>TELEFONO:</h3>
+							<h3>Telefono :</h3>
+							<div className={style.divisor}></div>
 							<input
 								type="text"
 								value={state.telefono}
@@ -78,6 +80,10 @@ function Pagina1(props) {
 						</div>
 					</div>
 				</form>
+				<div className={style.flexImagenes}>
+					<img src={require('../../img/izquierdaPag1.png')} />
+					<img src={require('../../img/derechaPag1.png')} />
+				</div>
 			</section>
 		</>
 	);
