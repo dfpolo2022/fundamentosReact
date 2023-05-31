@@ -14,7 +14,7 @@ class Pagina2 extends React.Component {
 						{user.nombre.toUpperCase()}
 					</a>
 					<a href="" className={style.headerNotif}>
-						NOTIFICACIONES
+						CERRAR SESIÓN
 					</a>
 				</header>
 				<Calendario />

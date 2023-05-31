@@ -27,30 +27,61 @@ export const datesAreOnSameDay = (first, second) =>
 	first.getDate() === second.getDate();
 
 export const getMonthYear = (date) => {
-	const d = date.toDateString().split(' ');
-	return `${d[1]} ${d[3]}`;
+	let d = date.getMonth();
+	if(d == 0){
+		d = 'ENERO'
+	} else if( d == 1){
+		d = 'FEBRERO'
+	}else if( d == 2){
+		d = 'MARZO'
+	}else if( d == 3){
+		d = 'ABRIL'
+	}else if( d == 4){
+		d = 'MAYO'
+	}else if( d == 5){
+		d = 'JUNIO'
+	}else if( d == 6){
+		d = 'JULIO'
+	}else if( d == 7){
+		d = 'AGOSTO'
+	}else if( d == 8){
+		d = 'SEPTIEMBRE'
+	}else if( d == 9){
+		d = 'OCTUBRE'
+	}else if( d == 10){
+		d = 'NOVIEMBRE'
+	}else if( d == 11){
+		d = 'DICIEMBRE'
+	}
+	return d+' '+date.getFullYear().toString();
 };
 
 export const nextMonth = (date, cb) => {
+	debugger;
 	const mon = date.getMonth();
 	if (mon < 11) {
 		date.setMonth(mon + 1);
+		console.log(date.setMonth(mon + 1));
 	} else {
 		date.setMonth(0);
 		date.setFullYear(date.getFullYear() + 1);
 	}
 	cb(new Date(date));
+	console.log(new Date(date));
 };
 
 export const prevMonth = (date, cb) => {
+	debugger;
 	const mon = date.getMonth();
 	if (mon > 0) {
 		date.setMonth(mon - 1);
+		console.log(date.setMonth(mon - 1));
 	} else {
 		date.setMonth(11);
 		date.setFullYear(date.getFullYear() - 1);
 	}
 	cb(new Date(date));
+	console.log(new Date(date));
 };
 
 export const getDarkColor = () => {

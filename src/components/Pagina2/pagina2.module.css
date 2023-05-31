@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Migontama";
+    src: url('../../../fonts/Migontama-Regular.otf') format('opentype');
+  }
+
 *{
     margin: 0;
     padding: 0;
@@ -5,27 +10,29 @@
 
 .headerStyle{
     background-color: orange;
-    border-bottom: 3px solid black;
     padding-bottom: 1vh;
     padding-top: 1vh;
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-family: 'Migontama';
 }
 
 .headerLinks{
-    color: black;
+    color: white;
     font-weight: bold;
     text-decoration: none;
     margin-left: auto;
     display: inline-block;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
 }
 
 .headerNotif{
-    color: black;
+    color: white;
     font-weight: bold;
     text-decoration: none;
     margin-left: 2vw;
     display: inline-block;
     margin-right: 2vw;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.6);
 }

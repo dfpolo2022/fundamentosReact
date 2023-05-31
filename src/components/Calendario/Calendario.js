@@ -34,6 +34,7 @@ export const Calendario = () => {
 
 	const upcomingEvents = getUpcomingEvents(events);
 
+	// ############################ COMENTADO PA QUE DEJE DE JODER
 	setTimeout(() => {
 		if (upcomingEvents) {
 			alert(
