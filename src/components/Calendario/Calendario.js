@@ -20,6 +20,7 @@ import {
 	range,
 	sortDays,
 	getUpcomingEvents,
+	verifyDate,
 } from './utils';
 
 export const Calendario = () => {
@@ -37,31 +38,33 @@ export const Calendario = () => {
 	const upcomingEvents = getUpcomingEvents(events);
 
 	const addEvent = (date, event) => {
-		if (!event.target.classList.contains('StyledEvent')) {
-			const text = window.prompt('name');
-			if (text) {
-				date.setHours(0);
-				date.setSeconds(0);
-				date.setMilliseconds(0);
-				setEvents((prev) => [
-					...prev,
-					{ date, title: text, color: getDarkColor() },
-				]);
-
-				const { email } = JSON.parse(localStorage.getItem('user'));
-
-				localStorage.setItem(
-					'eventos',
-					JSON.stringify([
-						...events,
-						{
-							user: email,
-							date,
-							title: text,
-							color: getDarkColor(),
-						},
-					])
-				);
+		if(verifyDate(date)){
+			if (!event.target.classList.contains('StyledEvent')) {
+				const text = window.prompt('name');
+				if (text) {
+					date.setHours(0);
+					date.setSeconds(0);
+					date.setMilliseconds(0);
+					setEvents((prev) => [
+						...prev,
+						{ date, title: text, color: getDarkColor() },
+					]);
+	
+					const { email } = JSON.parse(localStorage.getItem('user'));
+	
+					localStorage.setItem(
+						'eventos',
+						JSON.stringify([
+							...events,
+							{
+								user: email,
+								date,
+								title: text,
+								color: getDarkColor(),
+							},
+						])
+					);
+				}
 			}
 		}
 	};
