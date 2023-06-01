@@ -113,11 +113,27 @@ export const PortalWrapper = styled.div`
   ion-icon {
     font-size: 2rem;
     color: white;
-    background: red;
     padding: 10px 20px;
     border-radius: 6px;
     position: absolute;
     bottom: 10px;
+  }
+
+  ion-icon[name="trash-outline"] {
+    font-size: 2rem;
+    color: white;
+    padding: 10px 20px;
+    height: 11vh;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 10px;
+    width: 85%;
+    max-width: 100%;
+  }
+
+  textarea{
+    width: 100%;
+    max-width: 100%;
   }
 
   p {

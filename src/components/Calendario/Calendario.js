@@ -57,28 +57,6 @@ export const Calendario = () => {
 		}
 	};
 
-	// const drag = (index, e) => {
-	//   dragindexRef.current = { index, target: e.target };
-	// };
-
-	// const onDragEnter = (date, e) => {
-	//   e.preventDefault();
-	//   dragDateRef.current = { date, target: e.target.id };
-	// };
-
-	// const drop = (ev) => {
-	//   ev.preventDefault();
-
-	//   setEvents((prev) =>
-	//     prev.map((ev, index) => {
-	//       if (index === dragindexRef.current.index) {
-	//         ev.date = dragDateRef.current.date;
-	//       }
-	//       return ev;
-	//     })
-	//   );
-	// };
-
 	const handleOnClickEvent = (event) => {
 		setShowPortal(true);
 		setPortalData(event);
@@ -135,18 +113,6 @@ export const Calendario = () => {
 				{getSortedDays(currentDate).map((day) => (
 					<div
 						id={`${currentDate.getFullYear()}/${currentDate.getMonth()}/${day}`}
-						// onDragEnter={(e) =>
-						//   onDragEnter(
-						//     new Date(
-						//       currentDate.getFullYear(),
-						//       currentDate.getMonth(),
-						//       day
-						//     ),
-						//     e
-						//   )
-						// }
-						// onDragOver={(e) => e.preventDefault()}
-						// onDragEnd={drop}
 						onClick={(e) =>
 							addEvent(
 								new Date(
@@ -186,7 +152,6 @@ export const Calendario = () => {
 										)
 									) && (
 										<StyledEvent
-											// onDragStart={(e) => drag(index, e)}
 											onClick={() => handleOnClickEvent(ev)}
 											draggable
 											className="StyledEvent"
@@ -237,8 +202,13 @@ const Portal = ({ title, date, handleDelete, handlePotalClose }) => {
 		<PortalWrapper>
 			<h2>{title}</h2>
 			<p>{date.toDateString()}</p>
-			<ion-icon onClick={handleDelete} name="trash-outline">
-				BORRAR
+			<ion-icon name="trash-outline">
+				<textarea
+				type="textarea" 
+				rows="5" 
+				placeholder='Escribir comentarios...'
+				required
+				></textarea>
 			</ion-icon>
 			<ion-icon onClick={handlePotalClose} name="close-outline">
 				X
