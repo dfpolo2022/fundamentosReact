@@ -25,7 +25,9 @@ import {
 export const Calendario = () => {
 	const [currentDate, setCurrentDate] = useState(new Date());
 	const [events, setEvents] = useState(
-		JSON.parse(localStorage.getItem('eventos')) || []
+		JSON.parse(localStorage.getItem('eventos'))?.filter(
+			(ev) => ev.user === JSON.parse(localStorage.getItem('user')).email
+		) || []
 	);
 	const dragDateRef = useRef();
 	const dragindexRef = useRef();
@@ -46,11 +48,18 @@ export const Calendario = () => {
 					{ date, title: text, color: getDarkColor() },
 				]);
 
+				const { email } = JSON.parse(localStorage.getItem('user'));
+
 				localStorage.setItem(
 					'eventos',
 					JSON.stringify([
 						...events,
-						{ date, title: text, color: getDarkColor() },
+						{
+							user: email,
+							date,
+							title: text,
+							color: getDarkColor(),
+						},
 					])
 				);
 			}
@@ -94,15 +103,15 @@ export const Calendario = () => {
 	};
 
 	useEffect(() => {
-		setTimeout(() => {
-			if (upcomingEvents.length > 0) {
-				alert(
-					`Mañana tienes una cita de ${upcomingEvents
-						.map((e) => e.title)
-						.join(', ')}`
-				);
-			}
-		}, 1000);
+		// setTimeout(() => {
+		// 	if (upcomingEvents.length > 0) {
+		// 		alert(
+		// 			`Mañana tienes una cita de ${upcomingEvents
+		// 				.map((e) => e.title)
+		// 				.join(', ')}`
+		// 		);
+		// 	}
+		// }, 1000);
 	}, []);
 
 	return (
