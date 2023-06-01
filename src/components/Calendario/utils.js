@@ -91,8 +91,6 @@ export const getUpcomingEvents = (events) => {
 	return events.filter((event) => {
 		const eventDate = new Date(event.date);
 
-		console.log((currentDate.getDate() + 1) % 31);
-
 		return (
 			eventDate.getDate() === (currentDate.getDate() + 1) % 31 &&
 			(eventDate.getMonth() === currentDate.getMonth() ||

@@ -236,7 +236,7 @@ const Portal = ({ title, date, handleDelete, handlePotalClose }) => {
 	return (
 		<PortalWrapper>
 			<h2>{title}</h2>
-			<p>{date.toDateString()}</p>
+			<p>{new Date(date).toDateString()}</p>
 			<ion-icon onClick={handleDelete} name="trash-outline">
 				BORRAR
 			</ion-icon>
