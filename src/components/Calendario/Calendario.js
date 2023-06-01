@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
 	SevenColGrid,
 	Wrapper,
@@ -33,17 +33,6 @@ export const Calendario = () => {
 	const [portalData, setPortalData] = useState({});
 
 	const upcomingEvents = getUpcomingEvents(events);
-
-	// ############################ COMENTADO PA QUE DEJE DE JODER
-	setTimeout(() => {
-		if (upcomingEvents) {
-			alert(
-				`Mañana tienes una cita de ${upcomingEvents
-					.map((e) => e.title)
-					.join(', ')}`
-			);
-		}
-	}, 1000);
 
 	const addEvent = (date, event) => {
 		if (!event.target.classList.contains('StyledEvent')) {
@@ -103,6 +92,18 @@ export const Calendario = () => {
 		);
 		handlePotalClose();
 	};
+
+	useEffect(() => {
+		setTimeout(() => {
+			if (upcomingEvents.length > 0) {
+				alert(
+					`Mañana tienes una cita de ${upcomingEvents
+						.map((e) => e.title)
+						.join(', ')}`
+				);
+			}
+		}, 1000);
+	}, []);
 
 	return (
 		<Wrapper>

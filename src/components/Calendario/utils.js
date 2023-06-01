@@ -27,37 +27,25 @@ export const datesAreOnSameDay = (first, second) =>
 	first.getDate() === second.getDate();
 
 export const getMonthYear = (date) => {
-	let d = date.getMonth();
-	if(d == 0){
-		d = 'ENERO'
-	} else if( d == 1){
-		d = 'FEBRERO'
-	}else if( d == 2){
-		d = 'MARZO'
-	}else if( d == 3){
-		d = 'ABRIL'
-	}else if( d == 4){
-		d = 'MAYO'
-	}else if( d == 5){
-		d = 'JUNIO'
-	}else if( d == 6){
-		d = 'JULIO'
-	}else if( d == 7){
-		d = 'AGOSTO'
-	}else if( d == 8){
-		d = 'SEPTIEMBRE'
-	}else if( d == 9){
-		d = 'OCTUBRE'
-	}else if( d == 10){
-		d = 'NOVIEMBRE'
-	}else if( d == 11){
-		d = 'DICIEMBRE'
-	}
-	return d+' '+date.getFullYear().toString();
+	const MONTHS = [
+		'ENERO',
+		'FEBRERO',
+		'MARZO',
+		'ABRIL',
+		'MAYO',
+		'JUNIO',
+		'JULIO',
+		'AGOSTO',
+		'SEPTIMBRE',
+		'OCTUBRE',
+		'NOVIEMBRE',
+		'DICIEMBRE',
+	];
+
+	return MONTHS[date.getMonth()] + ' ' + date.getFullYear().toString();
 };
 
 export const nextMonth = (date, cb) => {
-	debugger;
 	const mon = date.getMonth();
 	if (mon < 11) {
 		date.setMonth(mon + 1);
@@ -71,7 +59,6 @@ export const nextMonth = (date, cb) => {
 };
 
 export const prevMonth = (date, cb) => {
-	debugger;
 	const mon = date.getMonth();
 	if (mon > 0) {
 		date.setMonth(mon - 1);
@@ -103,10 +90,15 @@ export const getUpcomingEvents = (events) => {
 
 	return events.filter((event) => {
 		const eventDate = new Date(event.date);
+
+		console.log((currentDate.getDate() + 1) % 31);
+
 		return (
-			eventDate.getDate() === currentDate.getDate() + 1 &&
-			eventDate.getMonth() === currentDate.getMonth() &&
-			eventDate.getFullYear() === currentDate.getFullYear()
+			eventDate.getDate() === (currentDate.getDate() + 1) % 31 &&
+			(eventDate.getMonth() === currentDate.getMonth() ||
+				eventDate.getMonth() === currentDate.getMonth() + 1) &&
+			(eventDate.getFullYear() === currentDate.getFullYear() ||
+				eventDate.getFullYear() === currentDate.getFullYear() + 1)
 		);
 	});
 };
