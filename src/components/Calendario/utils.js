@@ -102,20 +102,22 @@ export const getUpcomingEvents = (events) => {
 };
 
 export const verifyDate = (date) => {
-    const currentDate = new Date();
-    debugger;
-    if(date.getDate() <= currentDate.getDate()){
-        if(date.getFullYear() < currentDate.getFullYear()){
-            return false;
-        }else if(date.getMonth() <= currentDate.getMonth() && date.getFullYear() === currentDate.getFullYear()){
-            return false;
-        }    
-    } else {
-        if(date.getFullYear() < currentDate.getFullYear()){
-            return false;
-        }else if(date.getMonth() < currentDate.getMonth()){
-            return false;
-        }    
-    }
-    return true;    
-}
+	const currentDate = new Date();
+	if (date.getDate() <= currentDate.getDate()) {
+		if (date.getFullYear() < currentDate.getFullYear()) {
+			return false;
+		} else if (
+			date.getMonth() <= currentDate.getMonth() &&
+			date.getFullYear() === currentDate.getFullYear()
+		) {
+			return false;
+		}
+	} else {
+		if (date.getFullYear() < currentDate.getFullYear()) {
+			return false;
+		} else if (date.getMonth() < currentDate.getMonth()) {
+			return false;
+		}
+	}
+	return true;
+};

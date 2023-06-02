@@ -38,7 +38,7 @@ export const Calendario = () => {
 	const upcomingEvents = getUpcomingEvents(events);
 
 	const addEvent = (date, event) => {
-		if(verifyDate(date)){
+		if (verifyDate(date)) {
 			if (!event.target.classList.contains('StyledEvent')) {
 				const text = window.prompt('name');
 				if (text) {
@@ -49,9 +49,9 @@ export const Calendario = () => {
 						...prev,
 						{ date, title: text, color: getDarkColor() },
 					]);
-	
+
 					const { email } = JSON.parse(localStorage.getItem('user'));
-	
+
 					localStorage.setItem(
 						'eventos',
 						JSON.stringify([
@@ -184,6 +184,8 @@ export const Calendario = () => {
 					{...portalData}
 					handleDelete={handleDelete}
 					handlePotalClose={handlePotalClose}
+					setShowPortal={setShowPortal}
+					setEvents={setEvents}
 				/>
 			)}
 		</Wrapper>
@@ -209,23 +211,61 @@ const EventWrapper = ({ children }) => {
 		);
 };
 
-const Portal = ({ title, date, handleDelete, handlePotalClose }) => {
+const Portal = ({
+	title,
+	date,
+	handleDelete,
+	handlePotalClose,
+	setShowPortal,
+	setEvents,
+	...props
+}) => {
 	const eventDate = new Date(date);
+	const [comment, setComment] = useState(props?.comment ?? '');
 	const currentDate = new Date();
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const newEvent = {
+			...props,
+			title,
+			date,
+			comment,
+		};
+
+		const events = JSON.parse(localStorage.getItem('eventos'));
+
+		const newEvents = events.map((ev) => {
+			if (ev.title === title) {
+				return newEvent;
+			}
+			return ev;
+		});
+
+		localStorage.setItem('eventos', JSON.stringify(newEvents));
+		setEvents(newEvents);
+		setShowPortal(false);
+	};
 
 	return (
 		<PortalWrapper>
 			<h2>{title}</h2>
 			<p>{eventDate.toDateString()}</p>
 			{eventDate < currentDate && (
-				<ion-icon name="trash-outline">
-					<textarea
-						type="textarea"
-						rows="5"
-						placeholder="Escribir comentarios..."
-						required
-					></textarea>
-				</ion-icon>
+				<form onSubmit={handleSubmit}>
+					<ion-icon name="trash-outline">
+						<textarea
+							readOnly={props?.comment?.length > 0}
+							value={comment}
+							onChange={(e) => setComment(e.target.value)}
+							type="textarea"
+							rows="5"
+							placeholder="Escribir comentarios..."
+							required
+						></textarea>
+						<button type="submit">Enviar</button>
+					</ion-icon>
+				</form>
 			)}
 			<ion-icon onClick={handlePotalClose} name="close-outline">
 				X
