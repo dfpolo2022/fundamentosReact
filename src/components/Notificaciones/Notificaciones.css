@@ -5,6 +5,11 @@
     font-family: "Migontama";
 }
 
+.notif-item{
+    border: 1px solid black;
+    padding: 3px;
+}
+
 @font-face {
     font-family: "Migontama";
     src: url('../../../fonts/Migontama-Regular.otf') format('opentype');

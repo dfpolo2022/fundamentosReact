@@ -9,7 +9,7 @@ function Notificaciones(){
         <div className="notif-list">
             <h2>Notificaciones</h2>
             {notifs.map((item) => (
-              <div>
+              <div className="notif-item">
                 {item.title} {item.date}
               </div>
             ))}

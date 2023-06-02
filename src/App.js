@@ -11,32 +11,6 @@ class App extends React.Component {
         //llamado a la api
     }
 
-    // frutas = [{
-    //     id: 'askdjslad',
-    //     nombre: 'Fresa',
-    //     precio: 500
-    // },
-    // {
-    //     id: 'aghjghjad',
-    //     nombre: 'Manzana',
-    //     precio: 400
-    // },
-    // {
-    //     id: 'agyasj435d',
-    //     nombre: 'Pera',
-    //     precio: 750
-    // },
-    // {
-    //     id: 'fgdfg',
-    //     nombre: 'Banano',
-    //     precio: 250
-    // },
-    // {
-    //     id: '5asdhdf',
-    //     nombre: 'Naranja',
-    //     precio: 350
-    // }]
-
     state = {
         total: 0
     }

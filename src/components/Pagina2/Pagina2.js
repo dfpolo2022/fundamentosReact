@@ -4,11 +4,12 @@ import style from './pagina2.module.css';
 import { Calendario } from '../Calendario/Calendario';
 import Notificaciones from '../Notificaciones/Notificaciones';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function Pagina2(props) {
 	const user = JSON.parse(localStorage.getItem('user'));
 	const navigate = useNavigate();
-
+	const [notifs, setNotifs] = useState(new Date());
 	const handleLogout = () => {
 		localStorage.removeItem('user');
 		navigate('/');
@@ -27,8 +28,8 @@ function Pagina2(props) {
 				</a>
 			</header>
 			<div style={{display:"flex"}}>
-				<Calendario />
-				<Notificaciones/>
+				<Calendario setNotifs={setNotifs}/>
+				<Notificaciones notifs={notifs}/>
 			</div>
 		</>
 	);

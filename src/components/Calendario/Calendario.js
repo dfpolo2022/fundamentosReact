@@ -23,7 +23,7 @@ import {
 	verifyDate,
 } from './utils';
 
-export const Calendario = () => {
+export const Calendario = ({setNotifs}) => {
 	const [currentDate, setCurrentDate] = useState(new Date());
 	const [events, setEvents] = useState(
 		JSON.parse(localStorage.getItem('eventos'))?.filter(
@@ -43,20 +43,24 @@ export const Calendario = () => {
 		let notifs = JSON.parse(localStorage.getItem('notifs'));
 		const upcomingEvents = getUpcomingEvents(events);
 		console.log(upcomingEvents.length);
+		console.log("before", events);
 		upcomingEvents.forEach((upcomingEvent) => {
 			console.log(upcomingEvent);
 			notifs.push(upcomingEvent);
 			events.filter(event => event.title === upcomingEvent.title).forEach((event) => event.notified = true);
 		})
-		setEvents(events);
-		updateEventsInLocalStorage();
+		console.log("after", events);
+		//setEvents(events);
+		console.log("setted events", events);
+		//updateEventsInLocalStorage(events);
+		console.log("local storaged", events)
 		localStorage.setItem('notifs', JSON.stringify(notifs));
-
+		setNotifs(notifs);
 	};
 
 	setTimeout(notifyUpcomingEvents, 1000);
 
-	const updateEventsInLocalStorage = () => {
+	const updateEventsInLocalStorage = (events) => {
 		localStorage.setItem('eventos', JSON.stringify(events));
 	}
 
