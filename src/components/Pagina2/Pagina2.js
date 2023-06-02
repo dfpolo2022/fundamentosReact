@@ -2,6 +2,7 @@ import React from 'react';
 import Navegacion from '../Navegacion';
 import style from './pagina2.module.css';
 import { Calendario } from '../Calendario/Calendario';
+import Notificaciones from '../Notificaciones/Notificaciones';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 function Pagina2(props) {
@@ -21,11 +22,14 @@ function Pagina2(props) {
 				<a href="#" className={style.headerLinks}>
 					{user.nombre.toUpperCase()}
 				</a>
-				<a href="#" className={style.headerNotif} onClick={handleLogout}>
+				<a href="#" className={style.headerLogout} onClick={handleLogout}>
 					CERRAR SESIÓN
 				</a>
 			</header>
-			<Calendario />
+			<div style={{display:"flex"}}>
+				<Calendario />
+				<Notificaciones/>
+			</div>
 		</>
 	);
 }

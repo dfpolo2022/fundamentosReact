@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Pagina1 from './components/Pagina1'
-import Pagina2 from './components/Pagina2'
-
+import Pagina1 from './components/Pagina1';
+import Pagina2 from './components/Pagina2';
 class App extends React.Component {
 
     

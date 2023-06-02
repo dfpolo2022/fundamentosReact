@@ -1,0 +1,11 @@
+.notif-list{
+    position: relative;
+    left: -120px;
+    top: 180px;
+    font-family: "Migontama";
+}
+
+@font-face {
+    font-family: "Migontama";
+    src: url('../../../fonts/Migontama-Regular.otf') format('opentype');
+}

@@ -96,7 +96,8 @@ export const getUpcomingEvents = (events) => {
 			(eventDate.getMonth() === currentDate.getMonth() ||
 				eventDate.getMonth() === currentDate.getMonth() + 1) &&
 			(eventDate.getFullYear() === currentDate.getFullYear() ||
-				eventDate.getFullYear() === currentDate.getFullYear() + 1)
+				eventDate.getFullYear() === currentDate.getFullYear() + 1) &&
+			event.notified === false
 		);
 	});
 };

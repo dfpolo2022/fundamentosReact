@@ -35,7 +35,30 @@ export const Calendario = () => {
 	const [showPortal, setShowPortal] = useState(false);
 	const [portalData, setPortalData] = useState({});
 
-	const upcomingEvents = getUpcomingEvents(events);
+	const notifyUpcomingEvents = () => {
+		console.log('notifying');
+		if (localStorage.getItem('notifs') === "" | localStorage.getItem('notifs') === null){
+			localStorage.setItem('notifs', [])
+		}
+		let notifs = JSON.parse(localStorage.getItem('notifs'));
+		const upcomingEvents = getUpcomingEvents(events);
+		console.log(upcomingEvents.length);
+		upcomingEvents.forEach((upcomingEvent) => {
+			console.log(upcomingEvent);
+			notifs.push(upcomingEvent);
+			events.filter(event => event.title === upcomingEvent.title).forEach((event) => event.notified = true);
+		})
+		setEvents(events);
+		updateEventsInLocalStorage();
+		localStorage.setItem('notifs', JSON.stringify(notifs));
+
+	};
+
+	setTimeout(notifyUpcomingEvents, 1000);
+
+	const updateEventsInLocalStorage = () => {
+		localStorage.setItem('eventos', JSON.stringify(events));
+	}
 
 	const addEvent = (date, event) => {
 		if (verifyDate(date)) {
@@ -47,7 +70,7 @@ export const Calendario = () => {
 					date.setMilliseconds(0);
 					setEvents((prev) => [
 						...prev,
-						{ date, title: text, color: getDarkColor() },
+						{ date, title: text, color: getDarkColor(), notified: false },
 					]);
 
 					const { email } = JSON.parse(localStorage.getItem('user'));
@@ -61,6 +84,7 @@ export const Calendario = () => {
 								date,
 								title: text,
 								color: getDarkColor(),
+								notified: false
 							},
 						])
 					);
